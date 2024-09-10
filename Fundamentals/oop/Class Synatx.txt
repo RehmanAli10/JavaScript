@@ -1,0 +1,47 @@
+Class syntax overview
+----------------------
+what is a Class?
+--> A blueprint for creating objetcs with pre-defined properties and methods
+
+Syntax
+-------
+class Student{
+    constructor(firstName,lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+
+    }
+}
+
+const student1 = new Student("rehman ali","virk") //{firstName:"rehman ali" , lastName:"virk"}
+
+--> The methods to create new objects must be called constructor
+--> The Class keywords creates a constant, so you cannot redefine it.
+
+creating objects from classes
+----------------------------
+--> we use the new keyword e.g let firstStudent = new Student("Talha","Sultan"); so this is how we instantiate objects from a class.
+
+Instance methods
+----------------
+--> Instance methods are methods that provide functionality that pertains to a single instance of in our case Student.
+
+Class Methods
+-------------
+--> we use the "static" keyword in front of the method definition. So what this allows us to do is to find methods or
+functionality that is pertinent to classes but not necessarily to individual instances of a class.
+--> The "static" keyword defines a static method for a class. static methods are called without instantiating their class and 
+cannot be called through a class instance. Static methods are often used to create utility functions for an application.
+
+"this" keyword
+---------------
+--> Inside all of instance methods and constructor, the keyword "this" refers to the object created from that class (also known as an instance).
+
+Summary
+------
+--> Classes are blueprints that when created make objects known as intances.
+--> Classes are created with the new keyword.
+--> The constructor function is a special function that run when the class is instantiated.
+--> Instance methods can be added to classes similar to methods in objects.
+--> class methods can be added using the "static" keyword.
+
