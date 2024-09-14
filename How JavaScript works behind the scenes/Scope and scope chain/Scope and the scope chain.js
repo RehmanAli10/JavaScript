@@ -155,6 +155,70 @@ scope. One scope can only look up in a scope chain but it cannot look down basic
 execute and print to the console "Rehman Ali is a 24 year old software Engineer" even though "myName" and "age" variables were not defined in the current scope. All the
 engine did was to get them from the scope chain. Starting with ES6 not only function create scopes, but also blocks. However, these scopes only work for the ES6 variable 
 types so for let and const variables. That's why the only variable that's in the scope is the decade variable. The millenial variable isn't declared with const or let and
-therefore it is not scoped to just this block.
+therefore it is not scoped to just this block. Instead, the millenial variable is actually part of the "first" function scope. For a variable declared with "var" block scopes 
+don't apply at all. They are functions scoped, not block scoped. let and const on the other hand are in fact block scoped. Now about a sope chain if the millenial variable is in
+the first function scope, then ofcourse the second function scope also has access to it, even if it doesn't really need that variable. Also the scope chain does also apply to block scopes
+as well. And therefore in or if block scope we get access to all the variables from all its outer scopes. So from the first function scope, and of course from the global scope. The variables 
+in a global scope are accessible from everywhere. They are, because they are always at the top of the scope chain. We call variables in the global scope, global variables. Scope chain only works 
+upwards, not sideways.
+
+Scope chain vs Call-stack
+-------------------------
+Example
+
+const a="Rehman Ali";
+first();
+
+function first(){
+const b="Hello!"
+second();
+
+function second(){
+const c="Hi!";
+third();
+}
+}
+
+function third(){
+const d="Hey!";
+console.log(d+c+b+a); // Reference error
+}
+
+--> we have three functions called first, second and third. We start by calling the first function, which then calls the 
+second function, which in turn calls the third function. The scope chain has nothing to do with the order in which functions 
+were called. In other words, the scope chain has nothing to do with the order of execution contexts in the call stack. The 
+order of function call is not relevant to the scope chain at all. The scope chain in a certain scope is equal to adding together 
+all the variable enviornments of all the parent scopes. And this how the scope and the scope chain are built in the javascript engine
+behind the scenes. Now, in the second function we try to call the third function. But why does that work?. Well, it works because the
+third function is in th scope chan of the second function scope it's a function in the global scope or a global function, and therefore
+it is accessible everywhere. This will create a new scope along with the scope chain. What happens in this third function? well, we are 
+trying to access the variables d,c,b and a here. d is no problem because it's right there in the third function scope. The variable c is
+not in a local scope and so javascript needs to do a variable lookup. So, it looks up in a scope chain looking for variable c, but it's not 
+there. And of course it isn't because c is defined in the second function, and there is just no way in which the third function can access 
+variables defined in the second function. And that is true, even though it was the second function who called the third, and here is even more 
+proof that the order in which functions are called does not affect the scope chain at all. And so here as a result we get the reference error because 
+both c and b cannot be found in the third scope nor in the scope chain.
+
+Summary
+-------
+--> Scoping asks the question "where do variables live?" or "where can we access a certain variable, and where not?".
+
+--> There are 3 types of scope in javascript global scope, scopes defined by functions and scopes defined by blocks starting in ES6.
+However, only let and const variables are block scoped. Variables declared with "var" automatically end up in the closest function scope.
+
+--> In javascript, we have lexical scoping, which means that the rules of where we can access variables are based on where in the code functions
+and blocks are written.
+
+--> Every scope always has access to all the variables from all its outer scopes. And this is what we call the scope chain.
+
+--> When a certain variable is not in the current scope, the engine looks up in the scope chain until it finds the variable that 
+it's looking for, and this process is called variable lookup.
+
+--> The scope chain is one way street. So, a scope will never ever have access to the variables of an inner scope, only of outer scopes.
+
+--> We can also think of a scope chain in a certain scope as being equal to adding together all the variables enviornments of all the parent scopes.
+
+--> The scope chain has nothing to with the order in which functions were called. So the order of function calls does not affect the scope chain at all.
+
 
 */
