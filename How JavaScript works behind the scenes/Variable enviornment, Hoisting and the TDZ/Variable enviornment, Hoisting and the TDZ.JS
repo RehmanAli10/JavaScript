@@ -57,7 +57,12 @@
 --> What is actually the need for javascript to have a temporal dead zone?
      --> Well, the main reason that the TDZ was introduced in ES6 is that it makes it way easier to avoid and catch errors. Because using a variable that is set to undefined before it is actually declared can cause serious bugs which might be hard to find.
      
---> Accessing variable before declaration is bad practice and should be avoided. And the best way to avoid it is by simply getting an error when we attempt to do so. And that's exactly what a Temporal Dead Zone does. A second and smaller reason why the TDZ exists is to make const variables actually work the way they are supposed to. 
+--> Accessing variable before declaration is bad practice and should be avoided. And the best way to avoid it is by simply getting an error when we attempt to do so. And that's exactly what a Temporal Dead Zone does. A second and smaller reason why the TDZ exists is to make const variables actually work the way they are supposed to. we can't reassign const variables so it will not
+be possible to set them to undefined first and then assign their real value later. const should never be reassigned. And it's only assigned when execution actually reaches the declaration. And that makes it impossible to use the variable before.
+
+--> If hoisitng creates so many problems why does it exist in the first place?
+    --> The creator of javascript basically implemented hoisting so that we can use function declarartions before we use them. Because this is essential for some programming techniques, such as mutual recursion. Some people also thinks that makes code a lot more readable. The fact that it also works for var declarations is because that was the only way hoisting could be implemented at the time.
+    So, the hoisting of var variables is basically just a byproduct of hoisting functions. And it probably seemed like a good idea to probably set variables to undefined, which in hindsight is not really that great. 
 
 */
 
