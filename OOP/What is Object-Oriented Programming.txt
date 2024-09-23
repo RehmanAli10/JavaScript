@@ -1,0 +1,274 @@
+
+Object Oriented Programming
+----------------------------
+
+What is Object Oriented Programming?(OOP)
+
+--> OOP is a programming paradigm that is based on the concept of objects. And paradigm simply means the style of the code, so the how we write and organize code.
+
+--> We use objects to model, so to describe aspects of the real world, like a user or a to-do list item, or even more abstract features like an HTML component or some
+kind of data structure.
+
+--> Objects can contain data, which we call properties, and also code, which we call methods. So we can say that by using objects, we pack all the data and the corresponding behavior
+all in to one big block. And this makes it super easy to act directly on the data.
+
+--> In OOP objects are self-contained pieces of code or blocks of code, like small applications on their own. And we then use these objects as building blocks of our applications and make 
+objects interact with one another. Now these interaction happens through a so called public interface, which we also call API. This interface is basically a bunch of methods that a code outside
+of the objects can access and that we use to communicate with the object. 
+
+Example:
+const User={
+    ---------------->
+    user:"Rehman Ali",           Data
+    password:123456789,
+    ------------------->
+
+------------------->
+    login(password){
+        // Login logic
+
+    }                           Behaviour
+
+    sendMesage(str){
+        // Sending logic
+    }
+ ------------------------>   
+}
+
+--> Why does OOP actually exist?
+    --> This paradigm was developed with the goal of organizing code, so to make it more flexible and easier to maintain.So before
+    OOP, we might have a bunch of codes scattered across multiple functions, or even in the global scope without any structure. So the idea 
+    of OOP was basically to create a solution to the speghatti code.
+
+Classes and Instances(Traditional OOP)
+---------------------------------------
+--> In OOP, we actually need a way to generate, so to create, new objects from our code. And to do that in traditional OOP, we use somthing called classes. Think of a Class as a blueprint,
+which can then be used to create new objects based on the rules described in the class. So it's just like an architecture where the architect develops a blueprint to exactly plan and describe a house.
+But the blueprint is really just an abstract plan, like a set of rules, but nothing tangible that you can actually touch. But from that blueprint many real houses can then be built in the real world. And 
+with classes it's just the same.   
+
+Example: (Just a representation not actual javascript syntax)
+---------
+Class
+-----
+
+User{
+    user
+    password
+    email
+
+    login(password){
+        // login logic
+    }
+
+    sendMesage(str){
+        // sending logic
+    }
+}
+
+Instance
+--------
+
+new User("Rehman Ali)
+
+{
+    user:"Rehman Ali",
+    password:123456789,
+    email: "vrehmanali@gmail.com
+
+      login(password){
+        // login logic
+    }
+
+    sendMesage(str){
+        // sending logic
+    }
+}
+
+
+
+--> Let's take a look at this fictional User class as an example. And i say fictional because this is not actual javascript syntax because javascript does not actually support real classes. we can see that it kind of describes a user who has a username, a password, and an email. So it's a description of data
+about a user, but it's not the data itself yet because Class is really just a plan and a plan doesn't contain the real world data just yet. On the othet hand, we then have the behaviour that is associated with the data. And in this case that's just a login method and a method to send messages. So, this class
+has eveything related to a user. So data and behaviour all packed into one nice, self-contained block.
+
+--> Now let's use this Class and actually create a new object from this Class. All objects created through a class are instances of that class. An instance is a real object that we can use in our code, which was created from a class, and a class itself is not an object. So back to the blueprint analogy from earlier, this 
+insance is like a real house, which was created from the abstract blueprint created by the architect. And the beauty of this is that now we can use this class to create as many instances as we need in our application just like we can build multiple houses from just one blueprint.All of these instances so these objects ofcourse
+can have different data in them, but they all share the same functionality, which is to login and to send messages.  
+
+The 4 Fundamental OOP principles
+--------------------------------
+--> How do we actually design classes? How do we model real-world data in to classes?
+   --> There is no single correct way of designing classes.. There are, however, four fundamental principles that can guide us toward a good class implementation. And these principles are following:
+       1- Abstraction
+       2- Encapsulation
+       3- Inheritance
+       4- Polymorphism
+   --> And these are actually the techniques that can also be used outside of OOP, but they are especially relevant in this context.
+
+1- Abstraction
+--------------
+--> An abstraction basically means to ignore or to hide details that don't matter. This allows us to get an overview perspective of whatever it is that we're implementing instead of messing with details that don't really matter to our implementation.
+
+Example
+--------
+--> So let's say that we're implementing a phone for a user to use. And even though this doesn't make much sense in code, it's still a great example and analogy. So without abstraction we could design our class to include everything that there is about the phone, including all the internal stuff like verifying
+the phone's temperature, voltage, turning on the vibration motor or the speaker, and other low-level details. 
+
+Phone{
+    charge 
+    volume
+    voltage
+    temperature
+
+    homeBtn(){}
+    volumeBtn(){}
+    screen(){}
+    verifyVolt(){}
+    verifyTemp(){}
+    vibrate(){}
+    soundSpeaker(){}
+    soundEar(){}
+    frontCamon(){}
+    frontCamoff(){}
+    rearCamon(){}
+    rearCamoff(){}
+
+}
+
+--> But as a user interacting with a phone, do we really need all of this detail? Well, not so in reality when we interact with a real phone, all of these details have been abstracted away from us as the user. And all we are left with is a simple phone that we basically only interact with using the home button, volume buttons and the screen
+everything else is gone we simply don't need it as a user. So the phone then operates kind of as a black box, without us seeing what is happening inside. Now, internally the phone still needs to vibrate and to measure the voltage or to turn on the speaker, but we can hide these details from the user and that is exactly what abstraction means.
+we could implement a user's phone number, mailing address, hair color, shoe size, and tons of other stuff that we might not need in our application so we simply ignore these details.
+
+--> Abstraction is really important not just in OOP, but in programming in general. In fact, we create and use abstractions all the time. For example, take the add Event listener function that we use all the time. Do we actually know how exactly it works behind the scenes? Well, we don't and do we care? No, not really right? And we don't have to because once more, 
+the low-level details of how exactly it works has been obstructed away from us. We are simply the user and we can simply use that function without completely understanding it and without having to implement it ourselves. So that's abstraction. 
+
+Encapsulation
+-------------
+--> An encapsulation basically means to keep some properties and methods private inside the class so that they're not accessible from outside the class. However, some methods can, ofcourse, be exposed as a public interface, which we call API. Back to our example of a user from before, this is what private properties might look like conceptually. I'm talking hypothetical here
+because this "private" keyword here does not exist in JavaScript. As we already know, outside code now can't access these properties. However, inside the class, they are still accessible. For example password is ofcourse necessary in the login method so there we can use it and by having these critical properties nicely encapsulated like this we prevent external code from accidentally
+manipulating this internal state. And by the way, the term state simply refers to an object's data. Allowing external code to manipulate internal state directly can cause many kinds of bugs, especially in large code bases and developer teams.Now as you can see, there's also a private method here, the checkSPAM method it's not accessible from outside a class, but it is used internally
+to check if a comment is spam or not so we want no one else outside of the class to be able use this method, and so basically we don't make it part of the public interface. So the public interface is essentially all the methods that are not private, so that are not encapsulated so making methods private makes it easier for us to change our code with out breaking code from the outside,
+which might rely on some of these methods. For example, if the checkSPAM method was public, then it could be used anywhere in our code. And if we then changed the implementation of the method, it might break that code that is relying on it so again this helps avoiding bugs and also spaghetti code. 
+
+--> In summary we should always have the goal to nicely encapsulate most of our state and methods and only leaving essential methods public. 
+
+
+User{
+    user
+    private password
+    private email
+
+    login(word){
+        this.password===word
+    }
+
+    comment(text)
+    {
+        this.checkSPAM(text)
+    }
+    
+    private checkSPAM(text){
+        // Verify Logic
+    }
+}
+
+Inheritance
+-----------
+--> so lets say we have these two classes, user and admin, which stands for administrator. And as we can see, they have atually a lot in common. Infact, admin has all the properties and methods that user has. And that actually makes sense because if you think about it, an admin is also a user. So an admin also needs a password and an email, and he also needs 
+to log in, for example. However, if we design our classes like this, so as two separate identities, we will end up with a lot of duplicate code and we already know that that's bad. But well, that's where inheriatnce comes in to play. So, in OOP, when we have two classes that are closely related, like user and admin here, we can have one class inherit from the other so 
+we will have one parent class and one child class, and the child class then extends the parent class. But what does all of that actually mean? So just like you as a child probably inheritied some features of your parents, a child class inherits all the properties and methods from its parent class. In more formal terms inheritance makes all properties and methods of a
+certain class available to a child class, which ofcourse then forms a hierarchy between these two classes and the goal of this is to reuse logic that is common in both of the classes. In this case, both the admin and the user need to login and so instead of writing that logic twice, it makes sense to inherit login method from the more global class, which is the parent class
+user, to the more specific class, which is the child class admin. Now ofcourse a child class can then also have its own methods and properties. So at the end of the day the child class ends up with some methods adn properties from its parent and some of its own. So we can say that the adim is also a user, but basically an extended user, so with some added functionality.        
+
+Example
+--------
+User{
+    user
+    password
+    email
+
+    login(password){
+        // login logic
+    }
+
+    sendMessage(str){
+        // sending logic
+    }
+}
+
+
+Admin{
+    user
+    password
+    email
+    permissions
+
+    login(password, key){
+        // Different login
+    }
+
+    deleteUser(user){
+        // Deleting logic
+    }
+
+}
+
+Polymorphism
+-----------
+--> "Polymorphism" comes from greek where it literally means "many shapes". In context of OOP, polymorphisim means that child class can overwrite a method that it inherited from a parent class. 
+
+Example
+--------
+
+User{
+    user
+    password
+    email
+
+    login(password){
+        // login logic
+    }
+
+    sendMessage(str){
+        // sending logic
+    }
+}
+
+
+Admin{
+    user
+    password
+    email
+    permissions
+
+    login(password, key){
+        // Different login
+    }
+
+    deleteUser(user){
+        // Deleting logic
+    }
+
+}
+
+Author{
+    user 
+    password
+    email
+    posts
+
+    login(password){
+        // More Different
+    }
+
+    writePost(){
+        // writing logic
+    }
+
+}
+
+--> And here our user and admin classes again. But now we also have a third class, which is the author. Now admin and author are really just special kind of users,
+ and so it makes sense that they both inherit from the user class, therefore they inherit all the properties and methods from the user class, but we're gonna focus
+ on the login method now. Let's say that an admin requires a different kind of login method for example a more secure one, which has two-factor authentication. Let's 
+ say we also need a special login method for authors. So how do we give them different login methods? Well, its actually quite simple in each class we simply just write 
+ a new method, which is also called login. And then, according to polymorphism, that login method will overwrite the login method that has been inherited from the user class.  
