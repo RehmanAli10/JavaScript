@@ -1,0 +1,29 @@
+How the web works Request and Responses
+---------------------------------------
+--> Whenever we try to access a webserver the browser which is the client sends a request to the server and the server will then send back a response 
+and that reponse contains the data or the web page that we requested and this process actually has a name and it's called the Request-response model or
+also the client-server architecture.
+
+What happens when we access a web server?
+-----------------------------------------
+--> Let's use the URL that we used to get the country data https://restcountries.eu/rest/v2/alpha/PT
+
+--> In the above url https or http ---> Protocol, restcountries.eu--> Domain name, /rest/v2--> Resource.
+
+--> Every URL gets an HTTP or HTTPS which is for the protocol that will be used on this connection then we have the domain name which is "restcountries.eu" in 
+this case and also after a slash we have the so called resource that we want to access and in this case that is "/rest/v2" and so on. This domain name "restcountries.eu"
+is actually not the real address of the server that we're trying to acess it's really just a nice name that is easy for us to memorize but what this means is that we need a way
+of kind of converting the domain name to the real address of the server and that happens through a so called DNS. So DNS stands for domain name server and domain name servers are 
+a special kind of server so basically they are like the phone books of the internet. So the first step that happens when we access any web server is that the browser makes a request 
+to a DNS and this special server will then simply match the web address of the URL to the servers real IP address and actually this all happens through your internet srevice provider.
+The domain is not the real address and that a DNS will convert the domain to the real ip address and then after the real IP address has been sent back to the browser, we can finally call it.
+So this is how the real address looks like https://104.27.142.889:443 here protocol(http or https), ip address(104.27.142.889) and port number(Default 443 for HTTPS, 80 for HTTP ) this port number 
+is really just to identify a speific service thats running on a server so we can think of it like a sub address. This port number has nothing to do with /rest/V2/ that we want to access. So that 
+resource will actually be sent over in the HTTP request. 
+
+--> Once we have the real ip-adrress a TCP socket connection is established between the browser and the server and so they are now fnally connected and this connection is typically kept alive for the entire time 
+that it takes to transfer all files of the websites or all data.
+
+--> What are TCP and IP?
+-------------------------
+

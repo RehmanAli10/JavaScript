@@ -1,0 +1,91 @@
+Synchronous code
+---------------
+
+Example
+---------
+const p= document.querySelector(".p);
+p.textContent = "My name is Rehman Ali";
+alert("Text set!)
+p.style.color="red"; 
+
+Explaination of above example
+-----------------------------
+--> Sunchronous simply means the code is executed line by line, in the exact order of execution that we define in our code, just like in the above example. As the first line of 
+code is reached in the execution, it is simply executed in the execution of thread. Execution thread is part of the execution context, which does actually execute the code in 
+the computer's processor. Then the next line of code is executed and then the next one, all in sequence. So each line of code always wait for the previous line to finish execution.
+Now this can create problem when one line of code takes a long time to run. For example in the above code we have an alert statment, which creates the alert window this alert window will
+block the code execution so, nothing will happen on the page until we click that ok Button and only then the code can continue executing. Alert statement is the best example of a long running 
+operation, which blocks execution of the code.
+
+Asynchronous code
+-----------------
+Example 1
+--------
+const p= document.querySelector(".p");
+
+setTimeout(function(){
+    p.textContent = "My name is Rehman Ali";
+}.5000)
+
+p.style.color = "red";
+
+Explaination of above example
+-----------------------------
+--> The first line of code is still synchronous here and we also move to the second line in a synchronous way. But here we encountered the setTimeout function which will basically start a time in an asynchronous way. 
+So this means that the timer will essentially run in the background without preventing the main code from executing. We also register a callback function, which will not be executed now, but only after the timer has
+finished running. Now this callback function is asynchronous javascript and it is asynchronous because its only going to be executed after a task that is running in the background finishes execution and in this case that's
+the timer. So, this callback is basically registered and then we immediately move on to the next line so the main code is not being blocked and execution does not wait for the asynchronous timer to finish its work. And that 
+is the big difference between synchronous and asynchronous code.
+
+--> So in summary asynchronous programming is all about coordinating the behavior of our program over a certain period of time. So asynchronous literally means not occuring at the same time.
+
+--> Now as in above example we need callback function to implement this asynchronous behavior. However, that does not mean that callback functions automatically make code asynchronous that is just not the case.
+for example the array map method accepts a callback function as well, but doesn't make the code asynchronous only certain functions such as setTimeout work in an asynchronous way.
+
+Example 2 (Asynchronous Image loading with event and callback)
+-------------------------------------------------------------
+const img = document.querySelector(".dog");
+img.src="dog.jpg";
+img.addEventListener("load",function(){
+    img.classList.add("fadeIn");
+});
+p.style.width="300px";
+
+--> The first two lines run in a synchronous way, one after the other. Now in the second line we set the source attribute of the image that we selected in the first line. And this operation is actually asynchronous so setting the 
+source attribute of any image is essentially loading an image in the background while the rest of the code can keep running. Imagine that its a huge image, we wouldn't want our entire code to wait for the image to load and that's why 
+setting the source attribute was implemented in javascript in an asynchronous way. Now the image has finished loading, a load event will automatically be emitted by javascript and so then we can listen for that event in order to act on it.
+Listening for the load event is exactly what we do here in the next line as well so here we use addEventListener and to register a callback function for the load event so just like in the previous example we provide a callback function that will
+be executed once the image has been loaded and not right away, because all this code is non-blocking. So, instead of blocking execution moves on to the next line immediately then once the image is completely loaded it's displayed on the webpage and the 
+load event is emitted and since we are listening for that event our callback function is finally executed.
+
+--> Event listeners alone do not make code asynchronous, just like callback functions alone do also not make code asynchronous. For example an event listener listening for a click on a button is not doing any work in the background its simply waiting for a click
+to happen but it's not doing anything and so there is no asynchronous behavior involved at all. Now what makes the above code example asynchronous is simply the fact that the image is loading asynchronously in the background but not the fact that we are listening 
+for the load events to happen.So what matters is the asynchronous behavior of a task, like running a timer or loading an image. And there are more examples of asynchronous behavior in javascript like the Geolocation API or AJAX calls. And AJAX calls are the most important 
+use case of asynchronous javascript.
+
+What are AJAX calls?
+--------------------
+--> AJAX stands for Asynchronous javascript and XML, and basically it allows us to communicate with remote webservers in an asynchronous way. Now in practice we make AJAX calls in our code in order to request some data from a web server dynamically so without reloading the page
+so that we can use that data in our application dynamically.
+
+How AJAX works?
+---------------
+--> Lets say that we have our javascript appliation running in the browser, which is also called the client and we want the application to get some data from a web server and let's say data about countries. So with AJAX we can do an HTTP request to the server which has this data. And the server will
+then set back a response containing data that we requested. And this back and forth between client and server all happens asynchronously in the background. And there can be different type of requests like GET requests to receive data or POST requests to send data to a server. when we're asking a server to send us some data,
+this server usually contains a webApi and this API is the one that has the data that we're asking for.
+
+What is API?
+------------
+--> API stands for application programming interface, in general terms and on the very high-level of obstruction an API is basically a piece of software that can be used by another piece of software in order to basically allow applications to talk to each other and exhange information.
+
+--> In javascript and web development there are countless types of APIs, like the DOM API or the Geolocation API these are called APIs because these are a self-contained piece of software that allow other pieces of software to interact with them. Also we can always implement small and simple 
+API in a class where we make some methods available as a public interface. Objects made from a class can be seen as self-contained encapsulated pieces of software that other pieces of software can interact with.
+
+--> Online APIS
+    ------------
+    --> An online API is essentially an application running on a web server which receives requests for data, then retrives this data from some database and then sends it back to the client. 
+
+--> XML
+--------
+--> XML is a data format which used to be widely used to transmit data on the web. However, these days no API uses XML data anymore. Most API these days use the JSON data format. So JSON is the most popular data format today because its basically a javascript object, but converted to a string.  
+
