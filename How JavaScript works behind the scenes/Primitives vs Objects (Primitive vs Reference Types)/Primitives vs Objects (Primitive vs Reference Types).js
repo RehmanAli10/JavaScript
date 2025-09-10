@@ -5,7 +5,7 @@
  ------------------
  --> Primitives are like numbers, strings boolean etc.
 
- let age = 30;
+let age = 30;
 let oldAge = age;
 age = 31;
 console.log(age);
@@ -15,7 +15,7 @@ Object Example
 --------------
 const me = {
   name: "Rehman Ali",
-  age: 34,
+  age: 25,
 };
 
 const friend = me;
