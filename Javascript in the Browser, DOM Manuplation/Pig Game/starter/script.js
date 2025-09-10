@@ -18,6 +18,26 @@ let activePlayer = 0;
 let player_1Score = 0;
 let player_2Score = 0;
 
+function switchPlayer() {
+  if (activePlayer === 0) {
+    player1El.classList.remove('player--active');
+    player2El.classList.add('player--active');
+    player_1Score = 0;
+    currentScore = 0;
+    scorePlayer1El.textContent = player_1Score;
+    currentScoreElPlayer1.textContent = currentScore;
+    activePlayer = 1;
+  } else {
+    player2El.classList.remove('player--active');
+    player1El.classList.add('player--active');
+    player_2Score = 0;
+    currentScore = 0;
+    scorePlayer2El.textContent = player_2Score;
+    currentScoreElPlayer2.textContent = currentScore;
+    activePlayer = 0;
+  }
+}
+
 // clicking on roll dice button
 rollDiceBtnEle.addEventListener('click', function () {
   // generate a random number between 1 and 6
@@ -31,23 +51,7 @@ rollDiceBtnEle.addEventListener('click', function () {
 
   // if the random number is 1, switch to the next player
   if (randomNumber === 1) {
-    if (activePlayer === 0) {
-      player1El.classList.remove('player--active');
-      player2El.classList.add('player--active');
-      player_1Score = 0;
-      currentScore = 0;
-      scorePlayer1El.textContent = player_1Score;
-      currentScoreElPlayer1.textContent = currentScore;
-      activePlayer = 1;
-    } else {
-      player2El.classList.remove('player--active');
-      player1El.classList.add('player--active');
-      player_2Score = 0;
-      currentScore = 0;
-      scorePlayer2El.textContent = player_2Score;
-      currentScoreElPlayer2.textContent = currentScore;
-      activePlayer = 0;
-    }
+    switchPlayer();
   } else {
     currentScore = currentScore + randomNumber;
     currentScoreElPlayer1.textContent =
