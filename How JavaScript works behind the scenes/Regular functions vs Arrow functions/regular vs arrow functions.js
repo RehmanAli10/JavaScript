@@ -19,7 +19,7 @@
 //   //   console.log(`Hey ${this.firstName}`);
 //   // },
 
-//   greet: function () {
+//   greet: ()=>{
 //     console.log(this);
 //     console.log(`Hey ${this.firstName}`);
 //   },
@@ -40,6 +40,7 @@ const rehman = {
 
     // Solution 1
     const self = this; // This can also be called that or self.
+    console.log("self", self);
     // const isMillenial = function () {
     //   // console.log(this);
     //   console.log(self);
@@ -49,7 +50,7 @@ const rehman = {
     // isMillenial(); // This is just a regular function call. It is a regular function call even though it happens inside of a method. And the rule says that inside a regular function call, the "this" keyword must be undefined. And so there for it is undefined in this function
 
     const isMillenial = () => {
-      console.log(this);
+      console.log("this in isMillenial function", this);
       console.log(this.birthYear >= 1981 && this.birthYear <= 1996);
     };
     isMillenial();
