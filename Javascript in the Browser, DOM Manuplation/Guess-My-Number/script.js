@@ -12,7 +12,6 @@ const againButtonElement = document.querySelector(".again");
 const scoreElement = document.querySelector(".score");
 
 // function to display a message
-
 function displayMessage(message) {
   messageElement.textContent = message;
 }
@@ -26,7 +25,6 @@ inputElement.addEventListener("input", function (event) {
 });
 
 checkBtnElement.addEventListener("click", function (event) {
-  console.log("clicked");
   event.preventDefault();
 
   const gussedNumber = Number(inputElement.value);
@@ -37,7 +35,6 @@ checkBtnElement.addEventListener("click", function (event) {
     return;
   }
 
-  console.log("guessedNumber", gussedNumber);
   if (gussedNumber < secretNumber) {
     displayMessage("📉 Too low!");
     score = score - 1;
@@ -59,7 +56,7 @@ checkBtnElement.addEventListener("click", function (event) {
   }
 });
 
-//
+// Handing again button
 againButtonElement.addEventListener("click", function () {
   highScore = score > highScore ? score : highScore;
   highScoreElement.textContent = highScore;
