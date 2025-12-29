@@ -45,7 +45,7 @@ book.call(swiss, 583, "Akuma");
 
 // Apply method
 /*                    
---> The apply method does exactly the same thing. The only difference is that apply does not receive a list of arguments after this keyword instead its goinf to take an array of the argument. 
+--> The apply method does exactly the same thing. The only difference is that apply does not receive a list of arguments after this keyword instead its going to take an array of the argument. 
 --> This apply method is not used anymore in the modern javascript becuase now we actually have a better way of doing the exact same thing.  
 */
 
